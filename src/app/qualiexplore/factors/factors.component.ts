@@ -59,42 +59,17 @@
 
      editForm:FormGroup;
      allData : any;
-     allFS : any
+     allFS : any;
      allTasks = [];
 
-     isAuthenticated = false
-     user: string = null
-     updateButton = false
+     isAuthenticated = false;
+     user: string = null;
+     updateButton = false;
 
      isCheckboxChanged = false;
 
      
-     constructor(private route: ActivatedRoute, private router: Router, private modalService : NgbModal, private authService: AuthService, private location : Location, private graphqlApi: graphqlApiService) {
-    // Treeview Manual Approach -- maybe used later on ther page
-    //     interface Data {
-    //         lifeCyclePhases: LifeCyclePhase[];
-    //       }
-          
-    //       interface LifeCyclePhase {
-    //         name: string;
-    //         id: string;
-    //         qualityCharacteristicsContributesTo: QualityCharacteristic[];
-    //       }
-          
-    //       interface QualityCharacteristic {
-    //         name: string;
-    //         id: string;
-    //         description: string;
-    //         qualityFactorsContributesTo: QualityFactor[];
-    //       }
-          
-    //       interface QualityFactor {
-    //         name: string;
-    //         id: string;
-    //         description: string;
-    //       }
-
-    }
+     constructor(private route: ActivatedRoute, private router: Router, private modalService : NgbModal, private authService: AuthService, private location : Location, private graphqlApi: graphqlApiService) {}
     
      private subscriptions: Subscription[] = [];
      ngOnInit() {
@@ -407,14 +382,6 @@
         let list = [];
         console.log("Form Open :",this.selectedFactor);
         
-        // if(this.selectedFactor !== undefined){
-        //     description = this.selectedFactor.value.description;
-        //     id = this.selectedFactor.value.id;
-        //     for(let elem of this.selectedFactor.value.source){
-        //         source = elem;
-                
-        //     }
-        // }
         if(this.selectedFactor){
             id = this.selectedFactor.value.id
         }
@@ -450,11 +417,9 @@
 
         
                 Object.assign(factor, {checked : false}, {value : {label_ids : this.selections , source:[this.editForm.value.source], description:this.editForm.value.description}});
-                // console.log(factor)
-                // return factor;
+                
             }
         
-           
             if (factor.children !== undefined) {
                 this.parseFactors(factor.children);
             }
@@ -528,7 +493,6 @@
                 // console.log(description);
                 this.selectedFactor.value.description = description;
             }))
-            // window.location.reload()
             
         }
 
@@ -539,7 +503,6 @@
                 // console.log(description);
                 this.selectedFactor.value.description = description;
             }))
-            // window.location.reload()
             
         }
    
@@ -562,13 +525,5 @@
         ref.click();
      }
     
-    // For Manual TreeVieew 
-    //  togglePhase(phase) {
-    //     phase.expanded = !phase.expanded;
-    //   }
-      
-    //   toggleCharacteristic(characteristic) {
-    //     characteristic.expanded = !characteristic.expanded;
-    //   }
  }
  

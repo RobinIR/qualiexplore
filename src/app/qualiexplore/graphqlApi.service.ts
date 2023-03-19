@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { forkJoin, throwError } from 'rxjs';
 import { Apollo } from 'apollo-angular';
-import { v4 as uuid } from 'uuid';
 import { environment } from 'src/environments/environment'
 
 @Injectable({

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef, ChangeDetectorRef} from '@angular/core';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -30,7 +30,7 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
 
 
   constructor(private route: ActivatedRoute,private router: Router, private graphqlApi: graphqlApiService, private location: Location,  private authService: AuthService,
-  private modalService : NgbModal) {}
+  private modalService : NgbModal, private cdr: ChangeDetectorRef) {}
 
 
   private rasaChatScript: HTMLScriptElement;
@@ -41,14 +41,27 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
       // Qualiexplore bot widget      
       this.chatWidget()
       this.getAllData()
-  
+      
   }
 
   getAllData(){
     this.graphqlApi.getLifeCyclePhases().subscribe((res:any) => {
       this.item = res.data.lifeCyclePhases;
-      // console.log("Item ::",this.item);
-    } )
+      
+      this.item.forEach(phase => {
+        phase.expanded = true;
+  
+        phase.qualityCharacteristicsContributesTo.forEach(characteristic => {
+          characteristic.expanded = true;
+  
+          characteristic.qualityFactorsContributesTo.forEach(factor => {
+            factor.expanded = true;
+          });
+        });
+      });
+   
+      console.log("Item ::",this.item);
+    })
   }
 
   ngAfterViewInit() {
@@ -83,12 +96,18 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   // For Manual TreeVieew 
+
   togglePhase(phase) {
+
+    console.log(phase);
+  
     phase.expanded = !phase.expanded;
+    this.cdr.detectChanges();
   }
   
   toggleCharacteristic(characteristic) {
     characteristic.expanded = !characteristic.expanded;
+    this.cdr.detectChanges();
   }
 
    
@@ -143,6 +162,7 @@ getQfIds() {
     }));
   });
 }
+
 getLcIds() {
   return new Promise((resolve, reject) => {
     let lcIds = [];

@@ -108,7 +108,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
    async ngOnInit() {
       
         this.authService.autoLogin(); 
-
+             
         // QualiExplore bot widget.
        
         this.chatWidget();
