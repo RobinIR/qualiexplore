@@ -110,8 +110,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
         this.authService.autoLogin(); 
              
         // QualiExplore bot widget.
-       
-        this.chatWidget();
+
+       this.chatWidget();
     
         this.authService.user.subscribe((user) => {
           this.isAuthenticated = !!user
@@ -119,9 +119,14 @@ export class FiltersComponent implements OnInit, OnDestroy {
     
         const userData = JSON.parse(localStorage.getItem('userData'))
         this.user = userData?.username
+        console.log("check",this.user);
+        
         if (this.user == 'admin' && this.isAuthenticated) {
+          console.log("Admin mode on");
+          
           this.updateButton = true
         } else {
+          console.log("Admin mode off");
           this.updateButton = false
         }
 

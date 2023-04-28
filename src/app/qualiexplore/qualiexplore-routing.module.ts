@@ -20,6 +20,7 @@ import { FiltersComponent } from './filters/filters.component';
 import { FactorsComponent } from './factors/factors.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditTreeComponent } from './edit-tree/edit-tree.component';
+import { AuditAdvisorComponent } from './audit-advisor/audit-advisor.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
 
@@ -40,6 +41,10 @@ const routes: Routes = [
     {
         path: 'edit',
         component: EditTreeComponent
+    },
+    {
+        path: 'audit',
+        component: AuditAdvisorComponent
     },
     {
         path: '',

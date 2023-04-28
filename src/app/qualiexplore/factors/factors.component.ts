@@ -365,6 +365,9 @@
         this.router.navigate(['qualiexplore/filters'], { queryParams: { ids: JSON.stringify(arrayOfSelections) } });
      }
 
+     onAuditAdvisor(){
+        this.router.navigate(['qualiexplore/audit'])
+    }
     
     //Navigate to the editable tree to create new child
 
