@@ -107,9 +107,9 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
    async ngOnInit() {
       
-        this.authService.autoLogin(); 
+       this.authService.autoLogin(); 
              
-        // QualiExplore bot widget.
+       // QualiExplore bot widget.
 
        this.chatWidget();
     
@@ -119,22 +119,21 @@ export class FiltersComponent implements OnInit, OnDestroy {
     
         const userData = JSON.parse(localStorage.getItem('userData'))
         this.user = userData?.username
-        console.log("check",this.user);
+        // console.log("check",this.user);
         
         if (this.user == 'admin' && this.isAuthenticated) {
-          console.log("Admin mode on");
-          
+          // console.log("Admin mode on");
           this.updateButton = true
         } else {
-          console.log("Admin mode off");
+          // console.log("Admin mode off");
           this.updateButton = false
         }
 
         const previousFilterSelection = sessionStorage.getItem('currentNewFilters');
-        console.log("prev Filters :", previousFilterSelection);
+        // console.log("prev Filters :", previousFilterSelection);
         
         const previousSelectionsSet = sessionStorage.getItem('currentSelectionsSet');
-        console.log("prev sset :", previousSelectionsSet);
+        // console.log("prev sset :", previousSelectionsSet);
         if (previousFilterSelection !== null && previousSelectionsSet !== null) {
      
             this.selections = JSON.parse(previousSelectionsSet);
@@ -161,7 +160,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(){
-      console.log("Ondestroy Called :");
+      // console.log("Ondestroy Called :");
       setTimeout(() => {
         const chatWidgetContainer = document.querySelector('#rasa-chat-widget-container');
         if (chatWidgetContainer) {
@@ -177,11 +176,11 @@ export class FiltersComponent implements OnInit, OnDestroy {
       this.route.queryParams.pipe(
         map(params => params['ids'] ? JSON.parse(params['ids']) : [])
         ).subscribe(ids => {
-          console.log("ids :", ids);
-          console.log("check :", this.allFiltersInfo);
+          // console.log("ids :", ids);
+          // console.log("check :", this.allFiltersInfo);
           this.allFiltersInfo.forEach(filter => {
             filter.tasks.forEach(task => {
-              console.log("task :", task);
+              // console.log("task :", task);
               
               if (ids.includes(task.id)) {
                 task.checked = true;
@@ -219,7 +218,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     showNewFilters(){
    
       this.newFilters = this.allFiltersInfo
-      console.log("SNF FUNCTION",this.newFilters);
+      // console.log("SNF FUNCTION",this.newFilters);
     
     }
 
@@ -305,7 +304,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
        
           let dltId = this.editableObj.tasks[index].id;
           this.subscriptions.push(this.graphqlApi.deleteFilterStatement(dltId).subscribe((res)=>{
-            console.log(res);
+            // console.log(res);
             this.get_all_filters()
           }))
           // console.log("Deleted ID :", dlt_id)
@@ -324,7 +323,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
       
       try {
           const res = await this.graphqlApi.createFilterGroups(category).toPromise() as any;
-          console.log(res);
+          // console.log(res);
           var filterGroupId = res.data.createFilterGroups.filterGroups[0].id;
       } 
       catch (err) {
@@ -335,7 +334,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
           // const filterStatementId = uuid();
           try {
             const res = await this.graphqlApi.createFilterStatementsForNewGroup(statement, filterGroupId).toPromise();
-            console.log("Statement Creation Res:", res);
+            // console.log("Statement Creation Res:", res);
             this.get_all_filters();
             } 
           catch (err) {
@@ -391,15 +390,12 @@ export class FiltersComponent implements OnInit, OnDestroy {
    
           // console.log("To edit :",data);
           // console.log("To edit id :", data.id);
-          
         
           this.isEdit = true;
-          
           let category = '';
           let tasks = new FormArray([]);
           category = data.category;
           // console.log("tasks:", data.tasks);
-
           for(let task of data.tasks){
                 tasks.push(
                   new FormGroup({
@@ -412,11 +408,11 @@ export class FiltersComponent implements OnInit, OnDestroy {
               'tasks': tasks
           });
           
-          console.log(data);
+          // console.log(data);
          
          
           this.editableObj = Object.assign({},data)
-          console.log("After assigning data:",this.editableObj);
+          // console.log("After assigning data:",this.editableObj);
           
           this.modalService.open(this.editcontent, {ariaLabelledBy: 'popUp', size:'lg', centered: true});
         
@@ -444,10 +440,10 @@ export class FiltersComponent implements OnInit, OnDestroy {
       this.editableObj.category = dataObj.category;
   
       const updateFilterGroupResult = await this.graphqlApi.updateFilterGroup(this.editableObj).toPromise();
-      console.log(updateFilterGroupResult);
+      // console.log(updateFilterGroupResult);
   
       const updateOrCreateFilterStatementsResult = await this.graphqlApi.updateOrCreateFilterStatements(this.editableObj, dataObj).toPromise();
-      console.log(updateOrCreateFilterStatementsResult);
+      // console.log(updateOrCreateFilterStatementsResult);
       this.get_all_filters();
     } 
     catch (error) {

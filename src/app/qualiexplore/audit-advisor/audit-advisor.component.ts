@@ -24,8 +24,7 @@ export class AuditAdvisorComponent implements OnInit {
   }
 
   ngOnDestroy() {
-
-    console.log("Ondestroy Called :");
+    // console.log("Ondestroy Called :");
     setTimeout(() => {
       const chatWidgetContainer = document.querySelector('#rasa-chat-widget-container');
       if (chatWidgetContainer) {
@@ -46,7 +45,13 @@ export class AuditAdvisorComponent implements OnInit {
   onBack():void{
     let selections = sessionStorage.getItem('currentSelectionsSet');
     let arrayOfSelections = JSON.parse(selections);
-    this.router.navigate(['qualiexplore/factors'], { queryParams: { ids: JSON.stringify(arrayOfSelections) } });
+    if(arrayOfSelections){
+      this.router.navigate(['qualiexplore/factors'], { queryParams: { ids: JSON.stringify(arrayOfSelections) } });
+    }
+    else{
+      this.router.navigate(['qualiexplore/start']);
+    }
+    
   }
 
 }

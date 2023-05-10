@@ -15,7 +15,7 @@ import * as bcrypt from 'bcryptjs';
 })
 
 
-export class AuthComponent implements OnInit, OnDestroy, AfterViewInit, AfterContentChecked{
+export class AuthComponent implements OnInit, OnDestroy, AfterViewInit{
   constructor(private authService: AuthService, private router: Router) {}
 
   @ViewChild('authForm', {static:true}) authForm:NgForm
@@ -40,17 +40,14 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit, AfterCon
     const loadedUser = this.authService.isAuth(userData)
 
     if (loadedUser?.token) {
-      this.router.navigate(['./qualiexplore/filters'])
+      this.router.navigate(['./qualiexplore/start'])
     }
   }
 
   ngOnDestroy(){
-      
-      // this.subscription.unsubscribe();
+      // console.log("OnDestroy Called")
   }
-  ngAfterContentChecked(){
-    // this.errorMessage = null
-  }
+
 
   ngAfterViewInit(){
     this.errorMessage=null;
@@ -71,8 +68,8 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit, AfterCon
     validUserObs.subscribe(
       (result: any) => {
         const users = result.data.users[0].users;
-        console.log("RESULT", result);
-        console.log("USers", users);
+        // console.log("Result", result);
+        // console.log("Users", users);
 
         const user = users.find((u: any) => u.username === username);
         if (user) {
@@ -81,7 +78,7 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit, AfterCon
               authObs = this.authService.login(username, password);
               authObs.subscribe(
                 (resData) => {
-                  console.log("RESSS from component:",resData);
+                  // console.log("response:",resData);
                   
                   this.isLoading = false;
                   this.errorMessage = null;
@@ -89,7 +86,7 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit, AfterCon
                   // const refreshToken = resData.data.login.refreshToken;
                   // localStorage.setItem('accessToken', accessToken);
                   // localStorage.setItem('refreshToken', refreshToken);
-                  this.router.navigate(['./qualiexplore/filters']);
+                  this.router.navigate(['./qualiexplore/start']);
                   // this.sessionService.setUserFromToken(accessToken);
                 },
                 (error) => {
