@@ -1,6 +1,6 @@
 .scroll{
     height: 700px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 .bar-color{
     background-color: #b7b6b6 ;
@@ -119,4 +119,15 @@ input[readonly]:focus {
   margin-left: 60px; 
   margin-bottom: 10px; 
   cursor: pointer;
+}
+
+
+.bar-color{
+  background-color: #b7b6b6 ;
+}
+
+.jumbotron {
+  padding: 20px;
+  margin-bottom: 0;
+  border-radius: 1;
 }

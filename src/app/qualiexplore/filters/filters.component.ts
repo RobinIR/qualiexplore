@@ -455,6 +455,10 @@ export class FiltersComponent implements OnInit, OnDestroy {
     let ref = document.getElementById('cancel');
     ref.click();
   }
+
+  onBack(){
+    this.router.navigate(['qualiexplore/start']);
+  }
   
     
 }

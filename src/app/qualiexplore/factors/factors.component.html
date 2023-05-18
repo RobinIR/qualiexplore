@@ -90,7 +90,7 @@
         <button type="button" class="btn btn-outline btn-ouline-color mb-2" (click)="collapseSelectedFilters = !collapseSelectedFilters" [attr.aria-expanded]="!collapseSelectedFilters" aria-controls="collapseFilters">
             <span>Selected Filters</span> <i class="fas fa-angle-double-down ml-3" *ngIf="collapseSelectedFilters"></i>
         </button>
-        <button class="btn btn-color ml-3 mb-2" (click)="onAuditAdvisor()">Audit</button>
+        <button class="btn btn-color ml-3 mb-2" (click)="onAuditAdvisor()">Audit Assistant</button>
         <div id="collapseFilters" [ngbCollapse]="collapseSelectedFilters">
             <ul class="filter-details" *ngFor="let filter of selectedFilterDetails">
                 <li>
