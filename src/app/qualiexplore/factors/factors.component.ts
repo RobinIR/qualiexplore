@@ -137,7 +137,7 @@
 
     getAllData(){
         this.subscriptions.push(this.graphqlApi.getLifeCyclePhases().subscribe((res:any) => {      
-            console.log(res);
+            // console.log(res);
             
             let data = res.data;
             // converting response as ngx-treeview json format
@@ -195,9 +195,6 @@
               };
 
               const result: any = {"text": "Platform information quality",  "children": []};
-
-            //   console.log("Check Data :", data);
-              
 
               data.lifeCyclePhases.forEach((item: any) => {
                 const converted = convertToNewFormat(item);
