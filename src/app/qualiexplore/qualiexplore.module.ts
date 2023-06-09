@@ -30,9 +30,9 @@ import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { NgxTreeDndModule } from 'ngx-tree-dnd';
 import { EditTreeComponent } from './edit-tree/edit-tree.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit,faMinus,faPlus,faTimes } from '@fortawesome/free-solid-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -50,9 +50,9 @@ import { StartPageComponent } from './start-page/start-page.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxTreeDndModule,
     TreeviewModule.forRoot(),
     NgbModule, 
+    NgbProgressbarModule,
     FontAwesomeModule
   ],
   providers: [AuthService]
