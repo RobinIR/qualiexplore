@@ -34,8 +34,8 @@ import { EditTreeComponent } from './edit-tree/edit-tree.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEdit,faMinus,faPlus,faTimes } from '@fortawesome/free-solid-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+// import { faEdit,faMinus,faPlus,faTimes } from '@fortawesome/free-solid-svg-icons';
+// import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { AuditAdvisorComponent } from './audit-advisor/audit-advisor.component';
 import { StartPageComponent } from './start-page/start-page.component';
@@ -59,6 +59,7 @@ import { StartPageComponent } from './start-page/start-page.component';
 })
 export class QualiexploreModule {
    constructor(){
-      library.add(faEdit, faMinus, faPlus, faTimes, fas, far);
+      // library.add(faEdit, faMinus, faPlus, faTimes, fas, far);
+      library.add(far);
    }
  }

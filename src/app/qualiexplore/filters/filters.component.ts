@@ -21,11 +21,9 @@ import { FormArray, FormBuilder, FormControl, FormControlName, FormGroup, Valida
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service'
-import { stringify } from 'querystring';
 import { map } from 'rxjs/operators';
 import {graphqlApiService} from '../graphqlApi.service'
 import { Subscription } from 'rxjs';
-import { v4 as uuid } from 'uuid';
 import { environment } from 'src/environments/environment'
 import { ActivatedRoute } from '@angular/router';
 
@@ -175,7 +173,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     markPrevFilterStatements(){
       this.route.queryParams.pipe(
         map(params => params['ids'] ? JSON.parse(params['ids']) : [])
-        ).subscribe(ids => {
+        ).subscribe((ids: any[]) => {
           // console.log("ids :", ids);
           // console.log("check :", this.allFiltersInfo);
           this.allFiltersInfo.forEach(filter => {
