@@ -27,7 +27,7 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('newItemInput', { static: true }) newItemInput: ElementRef;
 
 
-  constructor(private route: ActivatedRoute,private router: Router, private graphqlApi: graphqlApiService, private location: Location,  private authService: AuthService,
+  constructor(private route: ActivatedRoute,private router: Router, private graphqlApi: graphqlApiService, private authService: AuthService,
   private modalService : NgbModal, private cdr: ChangeDetectorRef) {}
 
 
