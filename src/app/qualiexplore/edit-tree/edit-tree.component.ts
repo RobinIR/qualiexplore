@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef, ChangeDetectorRef} from '@angular/core';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -297,7 +296,6 @@ async updateName(data){
     // Save and Back 
 
     onBack():void{
-      // this.location.back();
       let selections = sessionStorage.getItem('currentSelectionsSet');
       let arrayOfSelections = JSON.parse(selections);
       this.router.navigate(['qualiexplore/factors'], { queryParams: { ids: JSON.stringify(arrayOfSelections) } });
