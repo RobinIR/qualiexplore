@@ -16,7 +16,6 @@
  import { Component, OnInit } from '@angular/core';
  import { ActivatedRoute, Router } from '@angular/router';
  import { TreeviewConfig, TreeviewItem, TreeItem } from 'ngx-treeview';
- import { Location } from '@angular/common';
  import { Filter } from '../filters/model/filter.model';
  import { newFilter } from '../filters/model/filter.model';
  import { FormArray, FormBuilder, UntypedFormControl, FormControlName, UntypedFormGroup, Validators } from '@angular/forms';
@@ -69,7 +68,7 @@
      isCheckboxChanged = false;
 
      
-     constructor(private route: ActivatedRoute, private router: Router, private modalService : NgbModal, private authService: AuthService, private location : Location, private graphqlApi: graphqlApiService) {}
+     constructor(private route: ActivatedRoute, private router: Router, private modalService : NgbModal, private authService: AuthService, private graphqlApi: graphqlApiService) {}
     
      private subscriptions: Subscription[] = [];
      ngOnInit() {
