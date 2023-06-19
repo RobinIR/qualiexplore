@@ -6,7 +6,7 @@ import { AuthService } from '../auth/auth.service';
 import { Subscription } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { graphqlApiService } from '../graphqlApi.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 
 @Component({
@@ -21,9 +21,9 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
   
   websocketUrl = environment.socketUrlApi;
   item : any;
-  editForm:FormGroup;
-  addForm:FormGroup;
-  cycleForm: FormGroup;
+  editForm:UntypedFormGroup;
+  addForm:UntypedFormGroup;
+  cycleForm: UntypedFormGroup;
 
   @ViewChild('newItemInput', { static: true }) newItemInput: ElementRef;
 
@@ -112,10 +112,10 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
    
   open(content,id, name) {
     this.modalService.open(content, {ariaLabelledBy: 'popUp', size:'lg', centered: true})  
-    this.editForm = new FormGroup({
-      'name' : new FormControl(name),
+    this.editForm = new UntypedFormGroup({
+      'name' : new UntypedFormControl(name),
      
-      'id' : new FormControl(id),
+      'id' : new UntypedFormControl(id),
       
     }); 
 
@@ -123,18 +123,18 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   openAddModal(addContent,id, name) {
     this.modalService.open(addContent, {ariaLabelledBy: 'popUp', size:'lg', centered: true})  
-    this.addForm = new FormGroup({
-      'name' : new FormControl(name),
-      'newItem': new FormControl(""),
-      'id' : new FormControl(id),
+    this.addForm = new UntypedFormGroup({
+      'name' : new UntypedFormControl(name),
+      'newItem': new UntypedFormControl(""),
+      'id' : new UntypedFormControl(id),
     }); 
 
   }
 
  openAddCycleModal(addCycle){
   this.modalService.open(addCycle, {ariaLabelledBy: 'popUp', size:'lg', centered: true})
-  this.cycleForm = new FormGroup({
-    'name': new FormControl(""),
+  this.cycleForm = new UntypedFormGroup({
+    'name': new UntypedFormControl(""),
   }); 
  }
 

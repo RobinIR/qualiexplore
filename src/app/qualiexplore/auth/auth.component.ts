@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms'
 import { Router } from '@angular/router'
 import { Observable, Subscription } from 'rxjs'
 import { AuthService } from './auth.service'
-import { User } from './user.model'
 import * as bcrypt from 'bcryptjs';
 
 

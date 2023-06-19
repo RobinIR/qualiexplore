@@ -17,7 +17,7 @@ import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, NgZone, Af
 import { Router } from '@angular/router';
 import { Filter } from './model/filter.model';
 import { newFilter } from './model/filter.model';
-import { FormArray, FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, FormControlName, UntypedFormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service'
@@ -69,7 +69,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     allFiltersInfo = [];
 
     private selectionsSet: Set<number> = new Set();
-    constructor(private modalService: NgbModal, private fb: FormBuilder,private router: Router, private ref: ChangeDetectorRef, private authService: AuthService, private graphqlApi: graphqlApiService, private eref : ElementRef, private route: ActivatedRoute) {
+    constructor(private modalService: NgbModal, private fb: UntypedFormBuilder,private router: Router, private ref: ChangeDetectorRef, private authService: AuthService, private graphqlApi: graphqlApiService, private eref : ElementRef, private route: ActivatedRoute) {
 
         this.editableObj = {
           id: "",
@@ -90,8 +90,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
    @ViewChild('content', {static: true}) content: ElementRef;
    @ViewChild('editcontent', {static: true}) editcontent: ElementRef;
    @ViewChildren("checkboxes") checkboxes: QueryList<ElementRef>;
-   filtersForm:FormGroup;
-   editForm:FormGroup;
+   filtersForm:UntypedFormGroup;
+   editForm:UntypedFormGroup;
    isEdit = false;
 
    isAuthenticated = false
@@ -141,8 +141,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
         
         
         //modal filters form
-        this.filtersForm = new FormGroup({
-            'category': new FormControl(null, Validators.required),
+        this.filtersForm = new UntypedFormGroup({
+            'category': new UntypedFormControl(null, Validators.required),
             'tasks': this.fb.array([this.fb.control('')])
           })
 
@@ -279,16 +279,16 @@ export class FiltersComponent implements OnInit, OnDestroy {
     onEditAddtask(){
        
         this.editArr.push(this.fb.group({
-          taskgroup: new FormControl("")
+          taskgroup: new UntypedFormControl("")
         }));
         
     }
       get formArr() {
-        return this.filtersForm.get('tasks') as FormArray;
+        return this.filtersForm.get('tasks') as UntypedFormArray;
       }
 
       get editArr(){
-        return this.editForm.get('tasks') as FormArray;
+        return this.editForm.get('tasks') as UntypedFormArray;
       }
      
       deleteFields(index:number){
@@ -391,18 +391,18 @@ export class FiltersComponent implements OnInit, OnDestroy {
         
           this.isEdit = true;
           let category = '';
-          let tasks = new FormArray([]);
+          let tasks = new UntypedFormArray([]);
           category = data.category;
           // console.log("tasks:", data.tasks);
           for(let task of data.tasks){
                 tasks.push(
-                  new FormGroup({
-                    'taskgroup' : new FormControl(task.name)
+                  new UntypedFormGroup({
+                    'taskgroup' : new UntypedFormControl(task.name)
                   })
                 );
               }
-          this.editForm = new FormGroup({
-              'category' : new FormControl(category),
+          this.editForm = new UntypedFormGroup({
+              'category' : new UntypedFormControl(category),
               'tasks': tasks
           });
           

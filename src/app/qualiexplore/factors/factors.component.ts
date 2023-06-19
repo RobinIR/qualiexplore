@@ -19,7 +19,7 @@
  import { Location } from '@angular/common';
  import { Filter } from '../filters/model/filter.model';
  import { newFilter } from '../filters/model/filter.model';
- import { FormArray, FormBuilder, FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
+ import { FormArray, FormBuilder, UntypedFormControl, FormControlName, UntypedFormGroup, Validators } from '@angular/forms';
  import { AuthService } from '../auth/auth.service'
  import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
  import { Observable, Subscription } from 'rxjs'
@@ -57,7 +57,7 @@
      selections : number[] = [];
      private selectionsSet: Set<number> = new Set();
 
-     editForm:FormGroup;
+     editForm:UntypedFormGroup;
      allData : any;
      allFS : any;
      allTasks = [];
@@ -392,10 +392,10 @@
             }
         }
 
-        this.editForm = new FormGroup({
-            'description' : new FormControl(description),
-            'source': new FormControl(source),
-            'id' : new FormControl(id),
+        this.editForm = new UntypedFormGroup({
+            'description' : new UntypedFormControl(description),
+            'source': new UntypedFormControl(source),
+            'id' : new UntypedFormControl(id),
         });  
           
      }
