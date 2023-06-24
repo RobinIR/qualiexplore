@@ -39,7 +39,7 @@
                     QualiExplore will show you factors that influence the quality of the information that you can use in your task.
             </span>
         </p>
-        <button class="btn btn-md float-right btn-color mt-2"  *ngIf="updateButton" (click)="open(content)">Add More</button>
+        <button class="btn btn-md float-right btn-color mt-2" [class.remove-focus]="modalClosed" *ngIf="updateButton" (click)="open(content)">Add More</button>
       </div>
       
     </div>

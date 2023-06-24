@@ -43,6 +43,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     taskarr=[];
     valid = false;
     pageLoaded : boolean;
+    modalClosed = true;
     
     allData : Object;
 
@@ -261,6 +262,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     open(content) {
     
         this.modalService.open(content, {ariaLabelledBy: 'popUp', size:'lg', centered: true})
+        this.modalClosed = false;
     }
     saveData(){
         const values = this.filtersForm.value;
@@ -311,7 +313,8 @@ export class FiltersComponent implements OnInit, OnDestroy {
         this.editArr.removeAt(index);
         let ref = document.getElementById('cancel');
         ref.click();
-        this.reset()
+        this.reset();
+        
       }
       
 
@@ -347,9 +350,10 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
       
       this.reset()
-
+      this.modalClosed = true
       let ref = document.getElementById('cancel');
       ref.click();
+      
     }
 
 
