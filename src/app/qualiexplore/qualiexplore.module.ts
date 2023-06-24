@@ -43,7 +43,7 @@ import { StartPageComponent } from './start-page/start-page.component';
 
 @NgModule({
 
-  declarations: [FiltersComponent, FactorsComponent, PageNotFoundComponent, EditTreeComponent, AuthComponent, HeaderComponent, LoadingSpinnerComponent, AuditAdvisorComponent, StartPageComponent],
+  declarations: [FiltersComponent, FactorsComponent, PageNotFoundComponent, EditTreeComponent, AuthComponent, HeaderComponent, LoadingSpinnerComponent, AuditAdvisorComponent, StartPageComponent, TreeviewModule],
   imports: [
     CommonModule,
     QualiexploreRoutingModule,
@@ -53,7 +53,7 @@ import { StartPageComponent } from './start-page/start-page.component';
     TreeviewModule.forRoot(),
     NgbModule, 
     NgbProgressbarModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [AuthService]
 })
