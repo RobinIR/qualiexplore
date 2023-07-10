@@ -42,8 +42,7 @@ import { StartPageComponent } from './start-page/start-page.component';
 // import { SessionService } from './auth/session.service';
 
 @NgModule({
-
-  declarations: [FiltersComponent, FactorsComponent, PageNotFoundComponent, EditTreeComponent, AuthComponent, HeaderComponent, LoadingSpinnerComponent, AuditAdvisorComponent, StartPageComponent, TreeviewModule],
+  declarations: [FiltersComponent, FactorsComponent, PageNotFoundComponent, EditTreeComponent, AuthComponent, HeaderComponent, LoadingSpinnerComponent, AuditAdvisorComponent, StartPageComponent],
   imports: [
     CommonModule,
     QualiexploreRoutingModule,

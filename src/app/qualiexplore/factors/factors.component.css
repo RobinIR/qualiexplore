@@ -103,3 +103,7 @@ ngb-progressbar ::ng-deep .progress-bar {
     background-color: #8064A2;
     color: white;
 }
+.remove-focus {
+    outline: none;
+    box-shadow: none;
+}

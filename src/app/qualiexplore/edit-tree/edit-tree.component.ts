@@ -8,6 +8,7 @@ import { graphqlApiService } from '../graphqlApi.service';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-edit-tree',
   templateUrl: './edit-tree.component.html',
@@ -85,7 +86,18 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
 
     
   chatWidget(){
+    // pass conversation id between two bots
+    const userData = JSON.parse(localStorage.getItem('userData'))
+    const username = userData.username
+    console.log(userData.username);
+    const chatData = JSON.parse(localStorage.getItem('chat_session'))
+    console.log(chatData)
+    console.log(chatData.session_id);
+    const conID = `${username}-${chatData.session_id}` 
 
+    console.log("Passing ID :",conID)
+
+    //
     this.rasaChatScript = document.createElement('script');
     this.rasaChatScript.src = 'https://unpkg.com/@rasahq/rasa-chat';
     this.rasaChatScript.type = 'application/javascript';

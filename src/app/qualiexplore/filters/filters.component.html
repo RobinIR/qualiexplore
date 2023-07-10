@@ -45,7 +45,6 @@
     </div>
   </div>
 
-
   <!-- <button class="btn btn-md float-right btn-color mt-3 mb-3"  *ngIf="updateButton" (click)="open(content)">Add More</button> -->
 
 
@@ -55,7 +54,7 @@
         
         <div class="modal-header">
           <h4 class="modal-title" id="popUp">Add Filter Category</h4>
-          <span class="close" aria-label="Close" (click)="modal.dismiss()">
+          <span class="close" aria-label="Close" (click)="modal.dismiss();  modalClosed = true">
             <span aria-hidden="true">&times;</span>
           </span>
         </div>
@@ -82,7 +81,7 @@
             
                 <div class="modal-footer">
                   <button type="button" class="btn btn-color" [disabled]="filtersForm.pristine || !filtersForm.valid" (click)="postFormData(filtersForm.value)">Add</button>
-                  <button type="button" id="cancel" class="btn btn-color" (click)="modal.close()">Close</button> 
+                  <button type="button" id="cancel" class="btn btn-color" (click)="modal.close();  modalClosed = true">Close</button> 
                 </div>
                 
             </form>

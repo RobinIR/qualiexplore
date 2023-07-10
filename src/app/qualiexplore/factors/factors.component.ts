@@ -66,6 +66,7 @@
      updateButton = false;
 
      isCheckboxChanged = false;
+     modalClosed = false;
 
      
      constructor(private route: ActivatedRoute, private router: Router, private modalService : NgbModal, private authService: AuthService, private graphqlApi: graphqlApiService) {}
@@ -515,7 +516,7 @@
         }
         
         alert('Data Updated Successfully');
-
+        this.modalClosed = true
         let ref = document.getElementById('cancel');
         ref.click();
      }

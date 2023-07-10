@@ -1,7 +1,8 @@
-.scroll{
-    height: 700px;
-    /* overflow-y: scroll; */
+.scroll-y {
+  overflow-y: auto;
+  max-height: 700px;
 }
+
 .bar-color{
     background-color: #b7b6b6 ;
 }

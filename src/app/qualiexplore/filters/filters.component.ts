@@ -43,7 +43,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     taskarr=[];
     valid = false;
     pageLoaded : boolean;
-    modalClosed = true;
+    modalClosed = false;
     
     allData : Object;
 
@@ -350,9 +350,14 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
       
       this.reset()
-      this.modalClosed = true
       let ref = document.getElementById('cancel');
-      ref.click();
+      if(ref){
+        ref.click();
+        this.modalClosed = true
+      }
+      else{
+        this.modalClosed = false
+      }
       
     }
 

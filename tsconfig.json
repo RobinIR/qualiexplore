@@ -1,5 +1,6 @@
 {
   "compileOnSave": false,
+  
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -22,8 +23,8 @@
     ],
     "noImplicitAny": false,
     "strictPropertyInitialization": false,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
