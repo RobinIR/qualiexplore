@@ -49,4 +49,4 @@ testem.log
 Thumbs.db
 
 # Security
-.env
+# .env
