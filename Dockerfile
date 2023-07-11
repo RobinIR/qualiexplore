@@ -1,6 +1,6 @@
 # Step 1: Build QualiExplore app in image 'builder'
 
-FROM node:12.8-alpine AS builder
+FROM node:16.14.2-alpine AS builder
 
 LABEL maintainer="Stefan Wellsandt <wel@biba.uni-bremen.de>"
 
