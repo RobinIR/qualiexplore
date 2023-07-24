@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, NgZone, AfterContentChecked, AfterViewInit, ViewChildren, QueryList, OnDestroy} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef, AfterViewInit, ViewChildren, QueryList, OnDestroy} from '@angular/core';
 import { Router } from '@angular/router';
 import { Filter } from './model/filter.model';
 import { newFilter } from './model/filter.model';
@@ -31,7 +31,7 @@ import { ActivatedRoute } from '@angular/router';
     selector: 'app-filters',
     templateUrl: './filters.component.html',
     styleUrls: ['./filters.component.css'],
-    providers: []
+    providers: [],
 })
 
 export class FiltersComponent implements OnInit, OnDestroy {
@@ -50,6 +50,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     subscription : Subscription;
 
     websocketUrl = environment.socketUrlApi;
+    chatID : string;
    
     editableObj: {
       id : string,
@@ -117,7 +118,14 @@ export class FiltersComponent implements OnInit, OnDestroy {
         })
     
         const userData = JSON.parse(localStorage.getItem('userData'))
+        const chatData = JSON.parse(localStorage.getItem('chat_session'))
         this.user = userData?.username
+        // To implement conversation ID
+        // const sessionID = chatData.session_id
+        // this.chatID = `${this.user}-${sessionID}`
+        
+        // console.log(this.chatID);
+        
         // console.log("check",this.user);
         
         if (this.user == 'admin' && this.isAuthenticated) {
@@ -266,7 +274,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
     }
     saveData(){
         const values = this.filtersForm.value;
-        console.log("Filtersform Value",values);
+        // console.log("Filtersform Value",values);
         const cats = values.category;
         const taskArr = values.tasks.name;
         taskArr.forEach(element => {
@@ -277,12 +285,14 @@ export class FiltersComponent implements OnInit, OnDestroy {
     onAddtask(){
         const control = this.fb.control('');
         this.formArr.push(control);
+        // this.ref.detectChanges();
     }
     onEditAddtask(){
        
         this.editArr.push(this.fb.group({
           taskgroup: new UntypedFormControl("")
         }));
+        // this.ref.detectChanges();
         
     }
       get formArr() {
@@ -326,6 +336,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
           const res = await this.graphqlApi.createFilterGroups(category).toPromise() as any;
           // console.log(res);
           var filterGroupId = res.data.createFilterGroups.filterGroups[0].id;
+
       } 
       catch (err) {
           console.error(err);
@@ -341,6 +352,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
           catch (err) {
                 console.error(err);
             }
+        
       }
       
       this.filtersForm.reset();
@@ -430,7 +442,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
       // console.log(data);
         if(confirm("Are you sure to delete it ?")){
           this.subscriptions.push(this.graphqlApi.deleteFilterGroups(data.id).subscribe(res => {
-            console.log(res);
+            // console.log(res);
             this.get_all_filters()
           }))
         }
@@ -464,6 +476,7 @@ export class FiltersComponent implements OnInit, OnDestroy {
   }
 
   onBack(){
+    sessionStorage.removeItem('currentSelectionsSet')
     this.router.navigate(['qualiexplore/start']);
   }
   

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, ElementRef, ChangeDetectorRef} from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef} from '@angular/core';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
@@ -15,7 +15,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
   styleUrls: ['./edit-tree.component.css']
 })
 
-export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
+export class EditTreeComponent implements OnInit, OnDestroy {
 
  
   
@@ -59,19 +59,12 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
         });
       });
    
-      console.log("Item ::",this.item);
+      // console.log("Item ::",this.item);
     })
-  }
-
-  ngAfterViewInit() {
-    // console.log("Afterview", this.newItemInput.nativeElement);
-    
-    // this.newItemInput.nativeElement.focus();
   }
 
   ngOnDestroy() {
 
-      console.log("Ondestroy Called :");
       setTimeout(() => {
         const chatWidgetContainer = document.querySelector('#rasa-chat-widget-container');
         if (chatWidgetContainer) {
@@ -86,16 +79,16 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
 
     
   chatWidget(){
-    // pass conversation id between two bots
     const userData = JSON.parse(localStorage.getItem('userData'))
     const username = userData.username
-    console.log(userData.username);
-    const chatData = JSON.parse(localStorage.getItem('chat_session'))
-    console.log(chatData)
-    console.log(chatData.session_id);
-    const conID = `${username}-${chatData.session_id}` 
+    // To implement conversation ID
+    // console.log(userData.username);
+    // const chatData = JSON.parse(localStorage.getItem('chat_session'))
+    // console.log(chatData)
+    // console.log(chatData.session_id);
+    // const conID = `${username}-${chatData.session_id}` 
 
-    console.log("Passing ID :",conID)
+    // console.log("Passing ID :",conID)
 
     //
     this.rasaChatScript = document.createElement('script');
@@ -109,7 +102,7 @@ export class EditTreeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   togglePhase(phase) {
 
-    console.log(phase);
+    // console.log(phase);
   
     phase.expanded = !phase.expanded;
     this.cdr.detectChanges();
@@ -187,33 +180,33 @@ getLcIds() {
 
 
 async updateName(data){
-    console.log(data.id, data.name);
+    // console.log(data.id, data.name);
     let lcIds: any = await this.getLcIds()
     let qcIds:any = await this.getQcIds();
     let qfIds:any = await this.getQfIds();
 
     if(lcIds.includes(data.id)){
-      console.log("This is a LC");
+      // console.log("This is a LC");
       this.subscriptions.push(this.graphqlApi.updateLCname(data.id, data.name).subscribe((res:any) => {
-        console.log(res);
+        // console.log(res);
         this.getAllData();
           
       }))
     }
 
     if(qcIds.includes(data.id)){
-      console.log("This is a QC");
+      // console.log("This is a QC");
       this.subscriptions.push(this.graphqlApi.updateQCname(data.id, data.name).subscribe((res:any) => {
-        console.log(res);
+        // console.log(res);
         this.getAllData();
           
       }))
     }
 
     if(qfIds.includes(data.id)){
-      console.log("This is a QF");
+      // console.log("This is a QF");
       this.subscriptions.push(this.graphqlApi.updateQFname(data.id, data.name).subscribe((res:any) => {
-        console.log(res);
+        // console.log(res);
         this.getAllData();
           
       }))
@@ -227,7 +220,7 @@ async updateName(data){
   addNewLifeCycle(data){
     const description ="Update the description";
     this.subscriptions.push(this.graphqlApi.createLC(data.name, description).subscribe((res:any) => {
-      console.log(res);
+      // console.log(res);
       this.getAllData();
       
     }))
@@ -238,26 +231,25 @@ async updateName(data){
   }
 
   async addItem(data){
-    console.log(data.id, data.name,  data.newItem);
+    // console.log(data.id, data.name,  data.newItem);
     let lcIds: any = await this.getLcIds()
     let qcIds:any = await this.getQcIds();
     // let qfIds:any = await this.getQfIds();
     const description ="Update the description";
     const source = "Update the source";
     if(lcIds.includes(data.id)){
-      console.log("This is a LC");
       // let uuID = uuid();
       this.subscriptions.push(this.graphqlApi.createQC(description, data.newItem, data.id).subscribe((res:any) => {
-          console.log(res);
+          // console.log(res);
           this.getAllData();
       }))
     }
 
     if(qcIds.includes(data.id)){
-      console.log("This is a QC");
+      // console.log("This is a QC");
       // let uuID = uuid();
       this.subscriptions.push(this.graphqlApi.createQF(description, data.newItem, source, data.id).subscribe((res:any) => {
-          console.log(res);
+          // console.log(res);
           this.getAllData();
       }))
     }
@@ -276,25 +268,25 @@ async updateName(data){
     if(confirm("Are you sure to delete it ?")){
 
       if(lcIds.includes(id)){
-        console.log("This is a LC");
+        // console.log("This is a LC");
         this.subscriptions.push(this.graphqlApi.deleteLC(id).subscribe((res:any) => {
-            console.log(res);
+            // console.log(res);
             this.getAllData();
         }))
       }
   
       if(qcIds.includes(id)){
-        console.log("This is a QC");
+        // console.log("This is a QC");
         this.subscriptions.push(this.graphqlApi.deleteQC(id).subscribe((res:any) => {
-            console.log(res);
+            // console.log(res);
             this.getAllData();
         }))
       }
   
       if(qfIds.includes(id)){
-        console.log("This is a QF");
+        // console.log("This is a QF");
         this.subscriptions.push(this.graphqlApi.deleteQF(id).subscribe((res:any) => {
-            console.log(res);
+            // console.log(res);
             this.getAllData();
         }))
       }

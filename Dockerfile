@@ -6,7 +6,7 @@ LABEL maintainer="Stefan Wellsandt <wel@biba.uni-bremen.de>"
 
 WORKDIR /usr/src/app
 COPY . .
-RUN npm install && npm run build
+RUN npm install && npm run build --legacy-peer-deps
 
 
 # Step 2: Use the build output from 'builder' image

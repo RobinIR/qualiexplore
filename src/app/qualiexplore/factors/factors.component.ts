@@ -212,10 +212,6 @@
        }));
     }
 
-     selection(item){
-        console.log(item.name, item.id);
-     }
-
     changeCheck(id: number, event: any) {
         // console.log("Label Ids ",this.selectedFactor.value.label_ids);
         this.isCheckboxChanged = true;
@@ -356,10 +352,19 @@
         let selections = sessionStorage.getItem('currentSelectionsSet');
         let arrayOfSelections = JSON.parse(selections);
         this.router.navigate(['qualiexplore/filters'], { queryParams: { ids: JSON.stringify(arrayOfSelections) } });
+        // To implement conversation ID
+        // let chatID = sessionStorage.getItem('chatID');
+        // this.router.navigate(['qualiexplore/filters'], { queryParams: { chatID, ids: JSON.stringify(arrayOfSelections) } });
+
+
      }
 
      onAuditAdvisor(){
         this.router.navigate(['qualiexplore/audit'])
+        // To implement conversation ID
+        // let chatID = sessionStorage.getItem('chatID');
+        // this.router.navigate(['qualiexplore/audit'], { queryParams: { chatID } });
+
     }
     
     //Navigate to the editable tree to create new child
@@ -470,10 +475,7 @@
             .pipe(
                 concatMap(() => this.graphqlApi.updateQFlabelIds(selectionsArray, data.id))
             )
-            .subscribe((res:any)=> {
-                console.log("Check :",res);
-                // window.location.reload()
-            }));
+            .subscribe());
         }
        
         
