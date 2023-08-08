@@ -86,6 +86,7 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit{
                   // localStorage.setItem('accessToken', accessToken);
                   // localStorage.setItem('refreshToken', refreshToken);
                   this.router.navigate(['./qualiexplore/start']);
+                  this.authService.scheduleRefresh();
                   // this.sessionService.setUserFromToken(accessToken);
                 },
                 (error) => {

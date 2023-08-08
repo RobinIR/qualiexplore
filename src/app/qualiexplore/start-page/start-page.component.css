@@ -2,11 +2,18 @@
     background-color: #b7b6b6 ;
 }
 
+@media (max-width: 767px) {
+
+  .btn {
+    white-space: nowrap; /* Prevent the button text from wrapping to the next line */
+    display: inline-block; /* Make sure the button is displayed as a block element */
+  }
+}
+
 .btn-color {
     background-color: hsl(267, 25%, 51%);
     padding: 12px 29px;
     color: white;
-    font-size: 18px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -33,3 +40,6 @@
   h2 {
     font-size: 36px;
   }
+
+
+  

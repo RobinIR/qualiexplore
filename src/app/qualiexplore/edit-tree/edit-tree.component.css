@@ -78,7 +78,7 @@ input[readonly]:focus {
     margin-left: 15px;
 }
 
-@media (max-width: 900px) and (min-width: 480px) {
+/* @media (max-width: 913px) and (min-width: 480px) {
     .tree::before,
     .tree::after {
       display: none;
@@ -90,8 +90,39 @@ input[readonly]:focus {
     .tree .col-xs-12 {
       margin-bottom: 10px;
     }
-}
+} */
 
+@media (max-width: 912px) {
+
+  .btn {
+    white-space: nowrap; /* Prevent the button text from wrapping to the next line */
+    display: inline-block; /* Make sure the button is displayed as a block element */
+  }
+  .tree {
+        /* Override the styles for .tree class, making it effectively empty */
+        position: static;
+        display: block;
+        flex-wrap: nowrap;
+        align-items: stretch;
+    }
+
+    .tree::before,
+    .tree::after {
+        /* Remove the pseudo-elements (::before and ::after) from .tree */
+        display: none;
+    }
+
+    .tree .form-control {
+        /* Adjust the margin for .form-control inside .tree for small devices */
+        margin-left: 0;
+        margin-right: 15px;
+    }
+
+    .tree .col-xs-12 {
+        /* If .col-xs-12 is inside .tree, you can adjust its styles as needed */
+        margin-bottom: 10px;
+    }
+}
 .phase{
   margin-left: 20px; 
   cursor: pointer; 

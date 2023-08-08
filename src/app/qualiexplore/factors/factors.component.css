@@ -57,6 +57,14 @@
     background-color: #b7b6b6 ;
 }
 
+@media (max-width: 767px) {
+
+    .btn {
+      white-space: nowrap; /* Prevent the button text from wrapping to the next line */
+      display: inline-block; /* Make sure the button is displayed as a block element */
+    }
+  }
+
 .btn-color {
     background-color: #8064A2;
     color: white;
