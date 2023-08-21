@@ -57,13 +57,9 @@
     background-color: #b7b6b6 ;
 }
 
-@media (max-width: 767px) {
 
-    .btn {
-      white-space: nowrap; /* Prevent the button text from wrapping to the next line */
-      display: inline-block; /* Make sure the button is displayed as a block element */
-    }
-  }
+
+
 
 .btn-color {
     background-color: #8064A2;
@@ -114,4 +110,100 @@ ngb-progressbar ::ng-deep .progress-bar {
 .remove-focus {
     outline: none;
     box-shadow: none;
+}
+
+@media (max-width: 991px) {
+    
+    .btn {
+        white-space: nowrap; /* Prevent the button text from wrapping to the next line */
+        display: inline-block; /* Make sure the button is displayed as a block element */
+      }
+  
+      body{
+          font-size: 14px;
+          
+      }
+      span{
+        font-size: 13.2px;
+      }
+      h1 {
+          font-size: 20px; /* Decrease h1 font size for mobile */
+      }
+    
+      h2 {
+          font-size: 18px; /* Decrease h2 font size for mobile */
+      }
+      h3, h4, h5,h6{
+        font-size: 17px;
+      }
+    
+      p {
+          font-size: 15px; /* Decrease p font size for mobile */
+      }
+      ul li{
+        font-size: 15px;
+        text-align: left;
+      }
+      div {
+        font-size:  15px;
+      }
+      .btn{
+        font-size: 15px;
+      }
+      .proceed{
+        text-align: right;
+        margin-right: 30px;
+      }
+
+      .shadow-pb{
+        width: 330px;
+      }
+
+     
+}
+
+
+@media (max-width: 767px) {
+
+    .btn {
+      white-space: nowrap; /* Prevent the button text from wrapping to the next line */
+      display: inline-block; /* Make sure the button is displayed as a block element */
+    }
+
+    body{
+        font-size: 10px;
+        
+    }
+
+    h1 {
+        font-size: 16px; /* Decrease h1 font size for mobile */
+    }
+  
+    h2 {
+        font-size: 15px; /* Decrease h2 font size for mobile */
+    }
+    h3, h4, h5,h6{
+      font-size: 14px;
+    }
+  
+    p {
+        font-size: 12px; /* Decrease p font size for mobile */
+    }
+    ul li{
+      font-size: 11px;
+      text-align: left;
+    }
+    div {
+      font-size:  12px;
+    }
+    .btn{
+      font-size: 12px;
+    }
+    .shadow-pb{
+        width: 343px;
+    }
+    .factorInfo{
+        margin-top: 10px;
+    }
+  
 }

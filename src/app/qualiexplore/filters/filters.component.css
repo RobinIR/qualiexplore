@@ -102,5 +102,119 @@
     outline: none;
     box-shadow: none;
 }
+
+@media (max-width: 991px) {
+    
+    .btn {
+        white-space: nowrap; /* Prevent the button text from wrapping to the next line */
+        display: inline-block; /* Make sure the button is displayed as a block element */
+      }
   
+      body{
+          font-size: 14px;
+          
+      }
   
+      h1 {
+          font-size: 20px; /* Decrease h1 font size for mobile */
+      }
+    
+      h2 {
+          font-size: 18px; /* Decrease h2 font size for mobile */
+      }
+      h3, h4, h5,h6{
+        font-size: 17px;
+      }
+    
+      p {
+          font-size: 15px; /* Decrease p font size for mobile */
+      }
+      ul li{
+        font-size: 15px;
+        text-align: left;
+      }
+      div {
+        font-size:  15px;
+      }
+      .btn{
+        font-size: 15px;
+      }
+      .proceed{
+        text-align: right;
+        margin-right: 30px;
+      }
+
+    .mv-form{
+        width: 400px;
+    }
+    .icon-red{
+        margin-left: 10px;
+        margin-top: 12px;
+    }
+
+}
+  
+
+@media (max-width: 767px) {
+
+    .btn {
+      white-space: nowrap; /* Prevent the button text from wrapping to the next line */
+      display: inline-block; /* Make sure the button is displayed as a block element */
+    }
+
+    body{
+        font-size: 10px;
+        
+    }
+
+    h1 {
+        font-size: 16px; /* Decrease h1 font size for mobile */
+    }
+
+    h2 {
+        font-size: 15px; /* Decrease h2 font size for mobile */
+    }
+    h3, h4, h5,h6{
+      font-size: 13px;
+    }
+
+    p {
+        font-size: 10px; /* Decrease p font size for mobile */
+    }
+    /* ul li{
+      font-size: 11px;
+      text-align: left;
+    } */
+    div {
+      font-size:  12px;
+    }
+
+    .mb-5 {
+        margin-bottom: 0;
+    }
+    .btn{
+        font-size: 12px;
+    }
+    .title{
+        margin-top: 8px;
+        margin-left: 100px ;
+    }
+    .back {
+        margin-left: 30px;
+    }
+    .text{
+        font-size: 12px;
+    }
+
+    .proceed-btn{
+        width:90px
+    }
+    .mv-form{
+        width: 339px;
+    }
+    .icon-red{
+        margin-top: 12px;
+    }
+    
+
+}

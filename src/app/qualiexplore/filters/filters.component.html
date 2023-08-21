@@ -19,15 +19,16 @@
  <div class="container mt-5">
   <div class="jumbotron bar-color text-center">
     <div class="row">
-        <div class="col-md-11 col-sm-9">
-            <h3>QualiExplore</h3>
+        <div class="col-7 col-md-11">
+            <h3 class="title">QualiExplore</h3>
         </div>
-        <div class="col-md-1 col-sm-3">
-            <div class="float-right">
-                <button class="btn btn-color" (click) = "onBack()">Back</button>
+        <div class="col-5 col-md-1">
+            <div class="float-md-right text-md-right back">
+                <button class="btn btn-color back" (click) = "onBack()">Back</button>
             </div>
         </div>
     </div>
+
   </div>
   <div class="row">
     <div class="col-md-12 col-sm-12">
@@ -68,10 +69,10 @@
                         <button class="btn btn-color mb-3" type="button" (click)="onAddtask()">Add filter statement</button>
                         <div class="form-group"  *ngFor="let task of formArr.controls; let i = index">
                           <div class="form-row">
-                              <div class="col-md-10">
-                                <input required type="text" class="form-control required" [formControlName] = "i">
+                              <div class="col col-xs-6 col-lg-10 col-md-10">
+                                <input required type="text" class="form-control mv-form required" [formControlName] = "i">
                               </div>
-                              <div class="col-md-2" *ngIf="i >= 1">
+                              <div class="col col-xs-6 col-lg-2 col-md-2" *ngIf="i >= 1">
                                   <i class="fa fa-trash icon-red" aria-hidden="true" (click)="deleteFields(i)"></i>
                               </div>
                             </div>
@@ -136,13 +137,13 @@
   <div class="row mt-5">
       <div class="col-lg-4 mb-5" *ngFor="let data of allFiltersInfo">
               <div class="row">
-                  <div class="col-md-9">
+                  <div class="col col-md-9">
                       <h4>
                           <i class="fas fa-bullseye"></i>
                               {{data.category}}
                       </h4>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col col-md-3">
                   <div class="float-right">
                           <i class="ticon fa fa-edit"  *ngIf="updateButton" (click)="editFormData(data)"></i>
                           <i class="ticon fa fa-trash ml-3"  *ngIf="updateButton" (click)="deleteData(data)"></i> 
@@ -182,7 +183,7 @@
           </button>
       </div>
       <div class="col-6 col-md-6 col-xs-6 col-sm-6 mb-3 text-right">
-          <button class="btn btn-md btn-color text-right" (click)="proceed()" [disabled]="!selections.length">
+          <button class="btn btn-md btn-color text-right proceed" (click)="proceed()" [disabled]="!selections.length">
           <span>Proceed</span>
           </button>
       </div>
@@ -197,7 +198,7 @@
       </button>
     </div>
     <div class="col-12 mb-3">
-      <button class="btn btn-md btn-color-sm" (click)="proceed()" [disabled]="!selections.length">
+      <button class="btn btn-md btn-color-sm proceed-btn" (click)="proceed()" [disabled]="!selections.length">
         <span>Proceed</span>
       </button>
     </div>
