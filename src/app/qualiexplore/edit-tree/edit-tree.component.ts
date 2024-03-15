@@ -218,7 +218,7 @@ async updateName(data){
   }
 
   addNewLifeCycle(data){
-    const description ="Update the description";
+    const description ="Please update the description";
     this.subscriptions.push(this.graphqlApi.createLC(data.name, description).subscribe((res:any) => {
       // console.log(res);
       this.getAllData();
@@ -235,8 +235,8 @@ async updateName(data){
     let lcIds: any = await this.getLcIds()
     let qcIds:any = await this.getQcIds();
     // let qfIds:any = await this.getQfIds();
-    const description ="Update the description";
-    const source = "Update the source";
+    const description ="Please update the description";
+    const source = "Please update the source";
     if(lcIds.includes(data.id)){
       // let uuID = uuid();
       this.subscriptions.push(this.graphqlApi.createQC(description, data.newItem, data.id).subscribe((res:any) => {
