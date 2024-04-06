@@ -23,10 +23,10 @@ import { EditTreeComponent } from './edit-tree/edit-tree.component';
 import { AuditAdvisorComponent } from './audit-advisor/audit-advisor.component';
 import { AuthComponent } from './auth/auth.component';
 import { StartPageComponent } from './start-page/start-page.component';
+import { UserManagementComponent } from './user-management/user-management.component';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-    // TODO enbale commented code when user connection is ready
     {
         path: 'auth', 
         component: AuthComponent
@@ -50,6 +50,10 @@ const routes: Routes = [
     {
         path: 'audit',
         component: AuditAdvisorComponent
+    },
+    {
+        path: 'user-management',
+        component: UserManagementComponent
     },
     {
         path: '',

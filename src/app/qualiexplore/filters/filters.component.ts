@@ -295,37 +295,37 @@ export class FiltersComponent implements OnInit, OnDestroy {
         // this.ref.detectChanges();
         
     }
-      get formArr() {
-        return this.filtersForm.get('tasks') as UntypedFormArray;
-      }
+    get formArr() {
+      return this.filtersForm.get('tasks') as UntypedFormArray;
+    }
 
-      get editArr(){
-        return this.editForm.get('tasks') as UntypedFormArray;
-      }
-     
-      deleteFields(index:number){
-        this.formArr.removeAt(index);
-      }
+    get editArr(){
+      return this.editForm.get('tasks') as UntypedFormArray;
+    }
+    
+    deleteFields(index:number){
+      this.formArr.removeAt(index);
+    }
 
-      deleteEditFields(index:number){
-        // console.log(this.allFiltersInfo);
-        // console.log("All tasks :",this.editableObj.tasks);
-        if(this.editableObj.tasks[index]){
-       
-          let dltId = this.editableObj.tasks[index].id;
-          this.subscriptions.push(this.graphqlApi.deleteFilterStatement(dltId).subscribe((res)=>{
-            // console.log(res);
-            this.get_all_filters()
-          }))
-          // console.log("Deleted ID :", dlt_id)
-          
-        }
-        this.editArr.removeAt(index);
-        let ref = document.getElementById('cancel');
-        ref.click();
-        this.reset();
+    deleteEditFields(index:number){
+      // console.log(this.allFiltersInfo);
+      // console.log("All tasks :",this.editableObj.tasks);
+      if(this.editableObj.tasks[index]){
+      
+        let dltId = this.editableObj.tasks[index].id;
+        this.subscriptions.push(this.graphqlApi.deleteFilterStatement(dltId).subscribe((res)=>{
+          // console.log(res);
+          this.get_all_filters()
+        }))
+        // console.log("Deleted ID :", dlt_id)
         
       }
+      this.editArr.removeAt(index);
+      let ref = document.getElementById('cancel');
+      ref.click();
+      this.reset();
+      
+    }
       
 
     async postFormData(dataObj) {
@@ -375,37 +375,37 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
 
 
-      /// get all filters data from graph
-      async get_all_filters(){
-        try {
-          this.allFiltersInfo = [];
-          const res: any = await this.graphqlApi.getFilterStatements().toPromise();
-          res.data.filterGroups.forEach(filterGroup => {
-            const groupName = filterGroup.name;
-            const existingGroup = this.allFiltersInfo.find(f => f.name === groupName);
-            if (existingGroup) {
-              filterGroup.filterStatementsBelongsTo.forEach(filterStatement => {
-                existingGroup.tasks.push({ id: filterStatement.id, name: filterStatement.text, checked: false });
-              });
-            } else {
-              let tasks = [];
-              filterGroup.filterStatementsBelongsTo.forEach(filterStatement => {
-                tasks.push({ id: filterStatement.id, name: filterStatement.text, checked: false });
-              });
-              this.allFiltersInfo.push({ id: filterGroup.id, category: groupName, tasks: tasks });
-            }
-          });
-          this.newFilters = this.allFiltersInfo;
-        } catch (error) {
-          console.log(error);
-        }
-
+    /// get all filters data from graph
+    async get_all_filters(){
+      try {
+        this.allFiltersInfo = [];
+        const res: any = await this.graphqlApi.getFilterStatements().toPromise();
+        res.data.filterGroups.forEach(filterGroup => {
+          const groupName = filterGroup.name;
+          const existingGroup = this.allFiltersInfo.find(f => f.name === groupName);
+          if (existingGroup) {
+            filterGroup.filterStatementsBelongsTo.forEach(filterStatement => {
+              existingGroup.tasks.push({ id: filterStatement.id, name: filterStatement.text, checked: false });
+            });
+          } else {
+            let tasks = [];
+            filterGroup.filterStatementsBelongsTo.forEach(filterStatement => {
+              tasks.push({ id: filterStatement.id, name: filterStatement.text, checked: false });
+            });
+            this.allFiltersInfo.push({ id: filterGroup.id, category: groupName, tasks: tasks });
+          }
+        });
+        this.newFilters = this.allFiltersInfo;
+      } catch (error) {
+        console.log(error);
       }
+
+    }
 
 
 
     // crud operations on Filters Editable Form using graphql API
-      editFormData(data){
+    editFormData(data){
    
           // console.log("To edit :",data);
           // console.log("To edit id :", data.id);
@@ -473,6 +473,10 @@ export class FiltersComponent implements OnInit, OnDestroy {
 
     let ref = document.getElementById('cancel');
     ref.click();
+  }
+
+  onUserManagement(){
+    this.router.navigate(['qualiexplore/user-management']);
   }
 
   onBack(){

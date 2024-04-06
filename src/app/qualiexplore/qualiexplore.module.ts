@@ -39,10 +39,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { AuditAdvisorComponent } from './audit-advisor/audit-advisor.component';
 import { StartPageComponent } from './start-page/start-page.component';
+import { UserManagementComponent } from './user-management/user-management.component';
 // import { SessionService } from './auth/session.service';
 
 @NgModule({
-  declarations: [FiltersComponent, FactorsComponent, PageNotFoundComponent, EditTreeComponent, AuthComponent, HeaderComponent, LoadingSpinnerComponent, AuditAdvisorComponent, StartPageComponent],
+  declarations: [FiltersComponent, FactorsComponent, PageNotFoundComponent, EditTreeComponent, AuthComponent, HeaderComponent, LoadingSpinnerComponent, AuditAdvisorComponent, StartPageComponent, UserManagementComponent],
   imports: [
     CommonModule,
     QualiexploreRoutingModule,

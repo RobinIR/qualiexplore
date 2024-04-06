@@ -12,7 +12,7 @@ export class graphqlApiService {
 
     // This api service has all query and mutation for neo4j database
 
-    constructor(private http: HttpClient, private apollo: Apollo,) {}
+    constructor(private http: HttpClient, private apollo: Apollo) {}
 
     private url = environment.graphApi // URL of the Apollo server that interacts with Neo4j.
     

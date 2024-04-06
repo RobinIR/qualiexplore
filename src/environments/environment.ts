@@ -7,8 +7,9 @@ export const environment = {
   production: false,
   socketUrlApi : "http://localhost:5005/", // Qualiexplore Assistant url
   auditUrlApi : "http://localhost:6005/", // Audit Assistant url
-  authApi : "http://localhost:1000/graphql", // URL of the Apollo server that interacts with the MongoDB (has an integrated GraphQL server).
-  graphApi: "http://localhost:4000/graphql"  // URL of the Apollo server that interacts with Neo4j.
+  authApi : "http://localhost:5000/graphql", // URL of the Apollo server that interacts with the MongoDB (has an integrated GraphQL server).
+  graphApi: "http://localhost:4001/graphql",  // URL of the Apollo server that interacts with Neo4j.
+  userManagementApi: "http://localhost:3001/users"
 };
 /*
  * For easier debugging in development mode, you can import the following file

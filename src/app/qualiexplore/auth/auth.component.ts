@@ -107,7 +107,7 @@ export class AuthComponent implements OnInit, OnDestroy, AfterViewInit{
       (error) => {
         this.errorMessage = 'DB Connection Error';
         this.isLoading = false;
-        // console.log(error);
+        console.log(error);
       }
     );
     this.errorMessage = null;
