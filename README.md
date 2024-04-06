@@ -3,27 +3,31 @@
 
 Standalone Frontend Angular application of QualiExplore Component in the [i4Q](www.i4q-project.eu)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.15.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.8.
 
-## Important Notes
+### Important Notes
 
-This App requires to backend server mongodb-graphql and neo4j-graphql server.
+This App requires two backend servers 'mongodb-graphql' and 'neo4j-graphql' server.
 
-* Data for user authentication fetch from mongodb-graphql server
-* Rest of the things are hanledled by neo4j-graphql server
-* Backend URLs are stored in environment folder
-* For rasa widget Socket connection has been used and SocketUrl stored in environment folder
+## Backend Servers
+
+- **mongodb-graphql**: Used for user authentication.
+- **neo4j-graphql**: Handles all other functionalities.
+
+Backend URLs and SocketUrls for RASA widget are stored in the `src/environments` folder.
+
+For backend servers setup, please refer to the [qualiexplore-stack repository](https://github.com/s-wel/qualiexplore-stack/tree/i4q).
+
+## Installation Instructions
+
+### Local Setup
+
+1. Install dependencies by running `npm i`.
+2. Start the application by running `ng serve`.
+3. The app will automatically reload if you make any changes to the source files.
 
 
-## Installation
-
-Run `ng serve` for a dev server
-The app will automatically reload if you change any of the source files.
-
-qualiexplore-stack : https://github.com/s-wel/qualiexplore-stack/tree/i4q
-
-
-## Docker
+## Installation through Docker
 
 QualiExplore is served through `nginx` HTTP Server. See `Dockerfile` for details.
 Qualiexplore is also available on [Docker Hub]
@@ -31,6 +35,7 @@ Qualiexplore is also available on [Docker Hub]
 *  [Dockerhub Image link will be added]
 
 See Dockerfile and docker-compose.yml file for details
+
 
 ## Contact
 
