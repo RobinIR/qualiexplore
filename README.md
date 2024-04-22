@@ -7,14 +7,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Important Notes
 
-This App requires two backend servers 'mongodb-graphql' and 'neo4j-graphql' server.
+This App requires three backend servers 'mongodb-graphql', 'user-management' and 'neo4j-graphql'server.
 
 ## Backend Servers
 
-- **mongodb-graphql**: Used for user authentication.
-- **neo4j-graphql**: Handles all other functionalities.
+- **mongodb-graphql**: This server is used for user [authentication](https://gitlab.ips.biba.uni-bremen.de/rasa-assistant/i4q/apollo-auth/-/tree/staging?ref_type=heads)
+- **user-management**: This server is used for create, read, update or delete [users](https://gitlab.ips.biba.uni-bremen.de/rasa-assistant/i4q/qualiexplore-user-management-server/-/tree/staging?ref_type=heads)
+- **neo4j-graphql**: This server handles all other functionalities of our [app](https://gitlab.ips.biba.uni-bremen.de/rasa-assistant/i4q/apollo-server/-/tree/qualiexplore/app?ref_type=heads)
 
-Backend URLs and SocketUrls for RASA widget are stored in the `src/environments` folder.
+Backend URLs and Socket URLs for RASA widget are stored in the `src/environments` folder.
 
 For backend servers setup, please refer to the [qualiexplore-stack repository](https://github.com/s-wel/qualiexplore-stack/tree/i4q).
 
@@ -22,9 +23,12 @@ For backend servers setup, please refer to the [qualiexplore-stack repository](h
 
 ### Local Setup
 
-1. Install dependencies by running `npm i`.
-2. Start the application by running `ng serve`.
-3. The app will automatically reload if you make any changes to the source files.
+1. Navigate to the Repository Directory.
+2. Install dependencies by running `npm i`.
+3. Start the application by running `ng serve`.
+4. By default, the application will be served on `http://localhost:4200/` and will automatically reload if you make any changes to the source files.
+5. To specify a different port please use this command `ng serve --port yourDesiredPortNumber`
+
 
 
 ## Installation through Docker
@@ -43,9 +47,9 @@ See Dockerfile and docker-compose.yml file for details
 
 ## Contributors
 
-* [Shantanoo Desai](mailto:des@biba.uni-bremen.de)
 * [Stefan Wellsandt](mailto:wel@biba.uni-bremen.de)
 * [Robin Kuri](mailto:kur@biba.uni-bremen.de)
+* [Shantanoo Desai](mailto:des@biba.uni-bremen.de)
 
 
 ## License

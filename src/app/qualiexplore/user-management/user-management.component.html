@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="list-group">
+          <ng-container *ngIf="users.length > 0; else emptyUsers">
             <div class="list-group-item list-group-item-action" *ngFor="let user of users">
               <div class="row align-items-center">
                 <div class="col-4">{{ user.username }}</div>
@@ -49,7 +49,12 @@
                 </div>
               </div>
             </div>
-          </div>
+          </ng-container>
+
+          <ng-template #emptyUsers>
+            <div class="alert alert-secondary my-2 text-center">There is no user on database. Please add user to get the data.</div>
+          </ng-template>
+          
         </div>
       </div>
     </div>
